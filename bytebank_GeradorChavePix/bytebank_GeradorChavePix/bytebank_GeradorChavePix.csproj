@@ -5,6 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Gerador de chaves aleatorias PIX</Title>
+    <Description>Esse pacote se destina a gerar chaves pix de forma aleatoria usando os recursos da estrutura guid.</Description>
   </PropertyGroup>
 
 </Project>
