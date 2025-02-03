@@ -1,3 +1,6 @@
+using Filmes.Data;
+using Microsoft.EntityFrameworkCore;
+
 namespace Filmes
 {
     public class Program
@@ -5,6 +8,10 @@ namespace Filmes
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            var connectionString = builder.Configuration.GetConnectionString("FilmeConnection");
+            builder.Services.AddDbContext<FilmeContext>(opts => 
+            opts.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
             // Add services to the container.
 
