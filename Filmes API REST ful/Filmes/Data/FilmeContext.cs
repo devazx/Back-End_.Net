@@ -11,5 +11,6 @@ namespace Filmes.Data
 
         }
         public DbSet<Filme> filmes { get; set; }
+        public DbSet<Cinema> Cinemas { get; set; }
     }
 }
