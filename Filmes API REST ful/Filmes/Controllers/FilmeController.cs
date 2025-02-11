@@ -43,7 +43,7 @@ namespace Filmes.Controllers
         [HttpGet]
         public IEnumerable<ReadFilmeDto> RecuperaFilmes([FromQuery]int skip = 0, [FromQuery] int take = 50)
         {
-            return _mapper.Map<List<ReadFilmeDto>>(_context.filmes.Skip(skip).Take(take));
+            return _mapper.Map<List<ReadFilmeDto>>(_context.filmes.Skip(skip).Take(take).ToList());
 
         }
         [HttpGet("{id}")]
