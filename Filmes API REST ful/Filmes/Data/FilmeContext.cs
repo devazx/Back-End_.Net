@@ -20,9 +20,13 @@ namespace Filmes.Data
                 .HasForeignKey(sessao => sessao.CinemaId);
 
             builder.Entity<Sessao>()
-                .HasOne(sessao => sessao.Cinema)
-                .WithMany(filme => filme.sessoes)
+                .HasOne(sessao => sessao.Filme)
+                .WithMany(filme => filme.Sessoes)
                 .HasForeignKey(sessao => sessao.FilmeId);
+            builder.Entity<Endereco>()
+                .HasOne(endereco => endereco.Cinema)
+                .WithOne(cinema => cinema.Endereco)
+                .OnDelete(DeleteBehavior.Restrict);
         }
         public DbSet<Filme> filmes { get; set; }
         public DbSet<Cinema> Cinemas { get; set; }

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Filmes.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    [Migration("20250211003939_Cinema e Filme")]
+    [Migration("20250212131943_Cinema e Filme")]
     partial class CinemaeFilme
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,12 +91,9 @@ namespace Filmes.Migrations
                     b.Property<int?>("CinemaId")
                         .HasColumnType("int");
 
-                    b.Property<int>("FilmeId1")
-                        .HasColumnType("int");
-
                     b.HasKey("FilmeId", "CinemaId");
 
-                    b.HasIndex("FilmeId1");
+                    b.HasIndex("CinemaId");
 
                     b.ToTable("Sessoes");
                 });
@@ -116,13 +113,13 @@ namespace Filmes.Migrations
                 {
                     b.HasOne("Filmes.Models.Cinema", "Cinema")
                         .WithMany("sessoes")
-                        .HasForeignKey("FilmeId")
+                        .HasForeignKey("CinemaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Filmes.Models.Filme", "Filme")
                         .WithMany("Sessoes")
-                        .HasForeignKey("FilmeId1")
+                        .HasForeignKey("FilmeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

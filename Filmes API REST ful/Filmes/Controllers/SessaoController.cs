@@ -39,9 +39,7 @@ namespace FilmesApi.Controllers
         [HttpGet("{filmeId}/{cinemaId}")]
         public IActionResult RecuperaSessoesPorId(int filmeId, int cinemaId)
         {
-            Sessao sessao = _context.Sessoes
-                .FirstOrDefault(sessao => sessao.FilmeId == filmeId && 
-                sessao.CinemaId == cinemaId);
+            Sessao sessao = _context.Sessoes.FirstOrDefault(sessao => sessao.FilmeId == filmeId && sessao.CinemaId == cinemaId);
             if (sessao != null)
             {
                 ReadSessaoDto sessaoDto = _mapper.Map<ReadSessaoDto>(sessao);
