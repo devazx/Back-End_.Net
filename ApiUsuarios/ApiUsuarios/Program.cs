@@ -1,5 +1,6 @@
 using ApiUsuarios.Data;
 using ApiUsuarios.Models;
+using ApiUsuarios.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -27,6 +28,8 @@ namespace ApiUsuarios
                 .AddDefaultTokenProviders();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+            builder.Services.AddScoped<CadastroService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
