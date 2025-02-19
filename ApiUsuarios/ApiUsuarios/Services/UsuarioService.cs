@@ -22,7 +22,7 @@ namespace ApiUsuarios.Services
         }
 
         
-        internal async Task CadastraAsync(CreateUsuarioDto dto)
+        public async Task CadastraUsuario(CreateUsuarioDto dto)
         {
             Usuario usuario = _mapper.Map<Usuario>(dto);
 
@@ -37,7 +37,7 @@ namespace ApiUsuarios.Services
 
             if (!result.Succeeded) throw new ApplicationException("Usuário não autenticado");
 
-            var usuario = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName.Equals(dto.Username.ToUpper()));
+            var usuario = _signInManager.UserManager.Users.FirstOrDefault(user => user.NormalizedUserName == dto.Username.ToUpper());
             
             var token = _tokenService.GenerateToken(usuario);
 

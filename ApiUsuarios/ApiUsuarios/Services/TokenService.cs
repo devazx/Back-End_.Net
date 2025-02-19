@@ -16,7 +16,8 @@ namespace ApiUsuarios.Services
                 new Claim("username", usuario.UserName),
                 new Claim("id", usuario.Id),
                 new Claim(ClaimTypes.DateOfBirth,
-                usuario.DataNascimento.ToString())
+                usuario.DataNascimento.ToString()),
+                new Claim("loginTimestamp", DateTime.UtcNow.ToString())
             };
 
             var chave = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("a9a8subda9s7dbv917232199s"));
