@@ -11,17 +11,24 @@ namespace ApiUsuarios.Controllers
     [Route("[Controller]")]
     public class UsuarioController : Controller
     {
-        private CadastroService _cadastroService;
-        public UsuarioController(CadastroService cadastroService)
+        private UsuarioService _usuarioService;
+        public UsuarioController(UsuarioService cadastroService)
         {
-            cadastroService = _cadastroService;
+            cadastroService = _usuarioService;
         }
 
-        [HttpPost]
+        [HttpPost("Cadastro")]
         public async Task<IActionResult> CadastraUsuario(CreateUsuarioDto dto)
         {
-            await _cadastroService.CadastraAsync(dto);
+            await _usuarioService.CadastraAsync(dto);
             return Ok("Usuario Cadasrtado!");
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> LoginAsync(LoginUsuarioDto dto)
+        {
+            var token = await _usuarioService.Login(dto);
+            return Ok(token);
         }
     }
 }
